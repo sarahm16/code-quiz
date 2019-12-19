@@ -20,8 +20,17 @@ let timerEl = document.querySelector('#timer');
 quizEl.style.display = 'none';
 timerEl.style.display = 'none';
 
+let timer = 10;
+function startTimer() {
+    setInterval(function() {
+        timer--;
+        timerEl.textContent = timer;
+    }, 1000);
+}
+
 startButton.addEventListener('click', function() {
     startButton.style.display = 'none';
     quizEl.style.display = 'block';
     timerEl.style.display = 'block';
+    startTimer();
 })

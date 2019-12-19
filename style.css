@@ -1,10 +1,13 @@
 #start {
     display: block;
-    padding: 10px;
+    position: relative;
+    padding: 10px 25px 10px 25px;
     background-color: purple;
     color:white;
+    font-size: 25px;
     margin: 0 auto;
     border-radius: 10px;
+    margin-top: 25%;
 }
 
 .wrapper {
@@ -16,4 +19,5 @@ ul {
     background-color: purple;
     padding: 20px;
     border-radius: 10px;
+    color: white;
 }
