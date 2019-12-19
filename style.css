@@ -1,0 +1,19 @@
+#start {
+    display: block;
+    padding: 10px;
+    background-color: purple;
+    color:white;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+.wrapper {
+    margin: 0 auto;
+    text-align: center;
+}
+
+ul {
+    background-color: purple;
+    padding: 20px;
+    border-radius: 10px;
+}
