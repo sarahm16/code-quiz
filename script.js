@@ -15,7 +15,7 @@
 
 let startButton = document.querySelector('#start');
 let quizEl = document.querySelector('.wrapper');
-let timerEl = document.querySelector('#timer');
+let timerEl = document.querySelector('#time-left');
 
 quizEl.style.display = 'none';
 timerEl.style.display = 'none';

@@ -11,6 +11,7 @@
 }
 
 .wrapper {
+    width: 50%;
     margin: 0 auto;
     text-align: center;
 }
@@ -20,4 +21,12 @@ ul {
     padding: 20px;
     border-radius: 10px;
     color: white;
+}
+
+#timer {
+    position: absolute;
+    top: 0px;
+    right: 30px;
+    font-size: 30px;
+    text-align: center;
 }
