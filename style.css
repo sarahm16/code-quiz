@@ -16,9 +16,10 @@
     text-align: center;
 }
 
-button {
+li {
     background-color: purple;
     padding: 20px;
+    margin: 10px;
     border-radius: 10px;
     color: white;
 }
