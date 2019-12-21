@@ -12,6 +12,7 @@ let quizEl = document.querySelector('.wrapper');
 let timerEl = document.querySelector('#time-left');
 let ulEl = document.querySelector('#answers');
 let questionEl = document.querySelector('#question');
+let correctEl = document.querySelector('.correct');
 
 let questionIndex = 0;
 let timer = 10;
@@ -32,13 +33,21 @@ function nextQuestion() {
         let li = document.createElement('button');
         li.textContent = questions[questionIndex].choices[i];
         ulEl.appendChild(li);
-        console.log(li);
     }
-    questionIndex++;
 }
 
-ulEl.addEventListener('click', function() {
+ulEl.addEventListener('click', function(event) {
     ulEl.textContent = "";
+    let answer = event.target;
+    console.log(answer.textContent);
+    console.log(questions[questionIndex].answer);
+    if(answer.textContent == questions[questionIndex].answer) {
+        correctEl.textContent = "Correct!";
+    }
+    else {
+        correctEl.textContent = "Incorrect!";
+    }
+    questionIndex++;
     nextQuestion();
 })
 
@@ -47,10 +56,11 @@ startButton.addEventListener('click', function() {
     quizEl.style.display = 'block';
     timerEl.style.display = 'block';
     startTimer();
-    nextQuestion();
 })
 
 ulEl.addEventListener('click', function(event) {
     let target = event.target;
 
 })
+
+nextQuestion();
