@@ -14,6 +14,7 @@ let ulEl = document.querySelector('#answers');
 let questionEl = document.querySelector('#question');
 let correctEl = document.querySelector('.correct');
 
+let score = 0;
 let questionIndex = 0;
 let timer = 10;
 
@@ -43,6 +44,8 @@ ulEl.addEventListener('click', function(event) {
     console.log(questions[questionIndex].answer);
     if(answer.textContent == questions[questionIndex].answer) {
         correctEl.textContent = "Correct!";
+        score++;
+        console.log(score);
     }
     else {
         correctEl.textContent = "Incorrect!";
