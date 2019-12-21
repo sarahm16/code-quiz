@@ -30,7 +30,7 @@ function startTimer() {
 
 function nextQuestion() {
     questionEl.textContent = questions[questionIndex].title;
-    for(let i = 0; i < 4; i++) {
+    for(let i = 0; i < questions[questionIndex].choices.length; i++) {
         let li = document.createElement('li');
         li.setAttribute("type", "button");
         li.textContent = questions[questionIndex].choices[i];
@@ -41,8 +41,6 @@ function nextQuestion() {
 ulEl.addEventListener('click', function(event) {
     ulEl.textContent = "";
     let answer = event.target;
-    console.log(answer.textContent);
-    console.log(questions[questionIndex].answer);
     if(answer.textContent == questions[questionIndex].answer) {
         correctEl.textContent = "Correct!";
         score++;
@@ -51,6 +49,10 @@ ulEl.addEventListener('click', function(event) {
         correctEl.textContent = "Incorrect!";
     }
     questionIndex++;
+    if(questionIndex == questions.length) {
+        alert('all done');
+    }
+    console.log(questionIndex);
     nextQuestion();
 })
 
