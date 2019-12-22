@@ -14,11 +14,21 @@
     <button id="start">Start Quiz!</button>
 
     <div class="wrapper">
-        <h1 id="question"></h1>
-        <hr>
-        <ul id="answers"></ul>
-        <hr>
-        <h2 class = "correct"></h2>
+        <div class="quiz">
+            <h1 id="question"></h1>
+            <hr>
+            <ul id="answers"></ul>
+            <hr>
+            <h2 class="correct"></h2>
+        </div>
+        <div class="high-scores">
+            <h2>High Scores:</h2>
+            <hr>
+        </div>
+        <div id="initials">
+            <input type="text" id="user-info" placeholder="Please enter your initials">
+            <input type="submit" id="submit">
+        </div>
     </div>
 
     <script src="questions.js"></script>

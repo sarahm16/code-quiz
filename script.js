@@ -1,30 +1,40 @@
-//grab elements from index.html
-//prompt user to start quiz
-//start the timer when prompt==confirm
-//display question 1. userAnswer = event.target
-//add click event to change to next question when answer = button
-    //if userAnswer[i]=answer[i] displaymessage correct!
-
-
-
 let startButton = document.querySelector('#start');
-let quizEl = document.querySelector('.wrapper');
+let quizEl = document.querySelector('.quiz');
 let timerEl = document.querySelector('#time-left');
 let ulEl = document.querySelector('#answers');
 let questionEl = document.querySelector('#question');
 let correctEl = document.querySelector('.correct');
+let initialsEl = document.querySelector('#initials');
+let scoreEl = document.querySelector('.high-scores');
+let submitEl = document.querySelector('#submit');
 
 let score = 0;
 let questionIndex = 0;
-let timer = 10;
+let timeLeft = 10;
 
+initialsEl.style.display = 'none';
+scoreEl.style.display = 'none';
 quizEl.style.display = 'none';
 timerEl.style.display = 'none';
 
+function highScore() {
+    initialsEl.style.display = 'none';
+    scoreEl.style.display = 'block';
+}
+
+function submitInfo() {
+    quizEl.style.display = 'none';
+    initialsEl.style.display = 'block';
+}
+
 function startTimer() {
-    setInterval(function() {
-        timer--;
-        timerEl.textContent = timer;
+    let timer = setInterval(function() {
+        timeLeft--;
+        timerEl.textContent = timeLeft;
+        if(timeLeft == 0) {
+            clearInterval(timer);
+            submitInfo();
+        }
     }, 1000);
 }
 
@@ -50,10 +60,15 @@ ulEl.addEventListener('click', function(event) {
     }
     questionIndex++;
     if(questionIndex == questions.length) {
-        alert('all done');
+        submitInfo();
     }
-    console.log(questionIndex);
+    console.log(timeLeft);
     nextQuestion();
+})
+
+submitEl.addEventListener('click', function() {
+    initialsEl.style.display = 'none';
+    scoreEl.style.display = 'block';
 })
 
 startButton.addEventListener('click', function() {
@@ -62,5 +77,6 @@ startButton.addEventListener('click', function() {
     timerEl.style.display = 'block';
     startTimer();
 })
+
 
 nextQuestion();
