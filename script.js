@@ -59,11 +59,13 @@ ulEl.addEventListener('click', function(event) {
         correctEl.textContent = "Incorrect!";
     }
     questionIndex++;
-    if(questionIndex == questions.length) {
+    if(questionIndex < questions.length) {
+        nextQuestion();
+    }
+    else {
         submitInfo();
     }
     console.log(timeLeft);
-    nextQuestion();
 })
 
 submitEl.addEventListener('click', function() {
