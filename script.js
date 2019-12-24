@@ -8,9 +8,10 @@ let initialsEl = document.querySelector('#initials');
 let scoreEl = document.querySelector('.high-scores');
 let submitEl = document.querySelector('#submit');
 
+let userInfo;
 let score = 0;
 let questionIndex = 0;
-let timeLeft = 10;
+let timeLeft = 30;
 
 initialsEl.style.display = 'none';
 scoreEl.style.display = 'none';
@@ -64,13 +65,13 @@ ulEl.addEventListener('click', function(event) {
     }
     else {
         submitInfo();
+        score = score + timeLeft;
     }
-    console.log(timeLeft);
 })
 
 submitEl.addEventListener('click', function() {
-    initialsEl.style.display = 'none';
-    scoreEl.style.display = 'block';
+    userInfo = document.querySelector('#user-info').value;
+    highScore();
 })
 
 startButton.addEventListener('click', function() {
