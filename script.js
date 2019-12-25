@@ -5,8 +5,9 @@ let ulEl = document.querySelector('#answers');
 let questionEl = document.querySelector('#question');
 let correctEl = document.querySelector('.correct');
 let initialsEl = document.querySelector('#initials');
-let scoreEl = document.querySelector('.high-scores');
+let scoreEl = document.querySelector('.score-div');
 let submitEl = document.querySelector('#submit');
+let scoreList = document.querySelector('.scores');
 
 let userInfo;
 let score = 0;
@@ -21,6 +22,9 @@ timerEl.style.display = 'none';
 function highScore() {
     initialsEl.style.display = 'none';
     scoreEl.style.display = 'block';
+    let div = document.createElement('div');
+    div.setAttribute('class', 'newScore');
+    scoreList.appendChild(div);
 }
 
 function submitInfo() {
@@ -66,6 +70,7 @@ ulEl.addEventListener('click', function(event) {
     else {
         submitInfo();
         score = score + timeLeft;
+        localStorage.setItem("newScore", JSON.stringify(score));
     }
 })
 

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="timer">Time left: <span id="time-left">10</span></div>
 
     <button id="start">Start Quiz!</button>
 
@@ -20,10 +19,15 @@
             <ul id="answers"></ul>
             <hr>
             <h2 class="correct"></h2>
+            <div id="timer">Time left: <span id="time-left"></span></div>
         </div>
-        <div class="high-scores">
+        <div class="score-div">
             <h2>High Scores:</h2>
             <hr>
+            <div class="scores">
+                <h3 id="name"></h3>
+                <h3 id="userScore"></h3>
+            </div>
         </div>
         <div id="initials">
             <input type="text" id="user-info" placeholder="Please enter your initials">
