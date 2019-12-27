@@ -31,3 +31,11 @@ li {
     font-size: 30px;
     text-align: center;
 }
+
+#name {
+    float: left;
+}
+
+#userScore {
+    float: right;
+}
