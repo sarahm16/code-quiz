@@ -16,12 +16,17 @@ let questionIndex = 0;
 let timeLeft = 30;
 let highScores = [];
 let playerResult = {};
+let initialPlay = [{player: 0,
+                    score: 0
+                    }];
 
 //starts the game with no divs visible except start button
 initialsEl.style.display = 'none';
 scoreEl.style.display = 'none';
 quizEl.style.display = 'none';
 timerEl.style.display = 'none';
+
+
 
 function highScoreList() {
     //hide submit button and display score div
@@ -30,7 +35,7 @@ function highScoreList() {
 
     //retrieves highScore object from local storage if local storage is set
     if(localStorage.getItem("score-list") === null) {
-        localStorage.setItem("score-list", JSON.stringify(score));
+        localStorage.setItem("score-list", JSON.stringify(initialPlay));
     }
 
     else {
@@ -42,7 +47,6 @@ function highScoreList() {
     
     //sorts the highScores object by score value
     highScores.sort((a,b) => (a.score > b.score) ? 1 : -1);
-    console.log(highScores);
 
     //save sorted highScores object into local storage
     localStorage.setItem("score-list", JSON.stringify(highScores));
@@ -121,11 +125,12 @@ startButton.addEventListener('click', function() {
     quizEl.style.display = 'block';
     timerEl.style.display = 'block';
     startTimer();
+
 })
 
 //clear high scores out of local storage
 clearScoresButton.addEventListener('click', function() {
-    localStorage.setItem("score-list", 0);
+    localStorage.setItem("score-list", JSON.stringify(initialPlay));
     scoreList.textContent = "";
 })
 

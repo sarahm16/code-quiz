@@ -1,8 +1,20 @@
+body {
+    background:black;
+}
+
+#question {
+    background: #ffffff;
+    margin: 0px;
+    font-size: 1.5em;
+    padding: 20px;
+    font-weight: bold;
+}
+
 #start {
     display: block;
     position: relative;
     padding: 10px 25px 10px 25px;
-    background-color: purple;
+    background-color: tan;
     color:white;
     font-size: 25px;
     margin: 0 auto;
@@ -14,14 +26,26 @@
     width: 50%;
     margin: 0 auto;
     text-align: center;
+    background: tan;
+}
+
+.quiz {
+    margin: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0px;
+    padding:0px;
 }
 
 li {
-    background-color: purple;
+    background-color: tan;
     padding: 20px;
-    margin: 10px;
-    border-radius: 10px;
     color: white;
+    margin: 0px;
+    border-bottom: 1px solid white;
+    font-size: 1.17em;
 }
 
 #timer {
@@ -30,6 +54,7 @@ li {
     right: 30px;
     font-size: 30px;
     text-align: center;
+    color: white;
 }
 
 #name {
@@ -42,4 +67,5 @@ li {
 
 .correct {
     text-align: left;
+    padding: 0px 0px 20px 10px;
 }
