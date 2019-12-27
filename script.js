@@ -23,16 +23,16 @@ scoreEl.style.display = 'none';
 quizEl.style.display = 'none';
 timerEl.style.display = 'none';
 
-function highScoreList(x) {
+function highScoreList() {
     //hide submit button and display score div
     initialsEl.style.display = 'none';
     scoreEl.style.display = 'block';
 
     //retrieves highScore object from local storage if local storage is set
     if(localStorage.getItem("score-list") === null) {
-        localStorage.setItem("score-list", 0);
+        localStorage.setItem("score-list", JSON.stringify(score));
     }
-    //if local storage is not set yet, set to some value
+
     else {
         highScores = JSON.parse(localStorage.getItem("score-list"));
     }
@@ -100,7 +100,6 @@ ulEl.addEventListener('click', function(event) {
     else {
         submitInfo();
         score = score + timeLeft;
-        localStorage.setItem("newScore", JSON.stringify(score));
     }
 })
 
@@ -111,6 +110,8 @@ submitEl.addEventListener('click', function() {
         player: userInfo, 
         score: score
     };
+
+
 
     highScoreList();
 })

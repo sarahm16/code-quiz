@@ -39,3 +39,7 @@ li {
 #userScore {
     float: right;
 }
+
+.correct {
+    text-align: left;
+}
