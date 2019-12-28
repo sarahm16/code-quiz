@@ -9,6 +9,7 @@ let scoreEl = document.querySelector('.score-div');
 let submitEl = document.querySelector('#submit');
 let scoreList = document.querySelector('.scores');
 let clearScoresButton = document.querySelector('#clear-scores');
+let playerScore = document.querySelector('#you-scored');
 
 let userInfo;
 let score = 0;
@@ -26,8 +27,6 @@ scoreEl.style.display = 'none';
 quizEl.style.display = 'none';
 timerEl.style.display = 'none';
 
-
-
 function highScoreList() {
     //hide submit button and display score div
     initialsEl.style.display = 'none';
@@ -37,7 +36,6 @@ function highScoreList() {
     if(localStorage.getItem("score-list") === null) {
         localStorage.setItem("score-list", JSON.stringify(initialPlay));
     }
-
     else {
         highScores = JSON.parse(localStorage.getItem("score-list"));
     }
@@ -54,7 +52,7 @@ function highScoreList() {
     //create list of high scores from highest to lowest
     for(let i = highScores.length-1; i >= 0; i--) {
         let div = document.createElement('div');
-        div.textContent = "player: " + highScores[i].player + " score: " + highScores[i].score;
+        div.textContent = highScores[i].player + " score: " + highScores[i].score;
         scoreList.appendChild(div);
     }
 }
@@ -76,6 +74,7 @@ function startTimer() {
     }, 1000);
 }
 
+//change to next question with associated answers
 function nextQuestion() {
     questionEl.textContent = questions[questionIndex].title;
     for(let i = 0; i < questions[questionIndex].choices.length; i++) {
@@ -86,15 +85,17 @@ function nextQuestion() {
     }
 }
 
-//when user selects answer from list
+//when user clicks on answer from list
 ulEl.addEventListener('click', function(event) {
     ulEl.textContent = "";
     let answer = event.target;
     if(answer.textContent == questions[questionIndex].answer) {
+        correctEl.setAttribute('class', 'correct');
         correctEl.textContent = "Correct!";
         score++;
     }
     else {
+        correctEl.setAttribute('class', 'incorrect');
         correctEl.textContent = "Incorrect!";
     }
     questionIndex++;
@@ -104,6 +105,7 @@ ulEl.addEventListener('click', function(event) {
     else {
         submitInfo();
         score = score + timeLeft;
+        playerScore.textContent = score;
     }
 })
 
@@ -114,9 +116,6 @@ submitEl.addEventListener('click', function() {
         player: userInfo, 
         score: score
     };
-
-
-
     highScoreList();
 })
 
@@ -133,6 +132,5 @@ clearScoresButton.addEventListener('click', function() {
     localStorage.setItem("score-list", JSON.stringify(initialPlay));
     scoreList.textContent = "";
 })
-
 
 nextQuestion();
