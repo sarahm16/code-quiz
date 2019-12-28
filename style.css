@@ -2,7 +2,8 @@ body {
     background:black;
 }
 
-#question {
+#question,
+#score-title {
     background: #ffffff;
     margin: 0px;
     font-size: 1.5em;
@@ -80,4 +81,9 @@ li:hover {
 
 #clear-scores {
     margin: 20px;
+}
+
+.low-time {
+    color: red;
+    font-size: 2em;
 }

@@ -69,6 +69,9 @@ function startTimer() {
     let timer = setInterval(function() {
         timeLeft--;
         timerEl.textContent = timeLeft;
+        if(timeLeft <= 5) {
+            timerEl.setAttribute('class', 'time-left low-time');
+        }
         if(timeLeft == 0) {
             clearInterval(timer);
             submitInfo();
@@ -115,12 +118,10 @@ ulEl.addEventListener('click', function(event) {
 //save players initials and score when player submits initials
 submitEl.addEventListener('click', function() {
     userInfo = document.querySelector('#user-info').value;
-
     playerResult = {
         player: userInfo, 
         score: score
     };
-
     highScoreList();
 })
 
@@ -129,7 +130,6 @@ startButton.addEventListener('click', function() {
     quizEl.style.display = 'block';
     timerEl.style.display = 'block';
     startTimer();
-
 })
 
 //clear high scores out of local storage
