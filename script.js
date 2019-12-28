@@ -52,17 +52,19 @@ function highScoreList() {
     //create list of high scores from highest to lowest
     for(let i = highScores.length-1; i >= 0; i--) {
         let div = document.createElement('div');
+        div.setAttribute('class', 'newScore');
         div.textContent = highScores[i].player + " score: " + highScores[i].score;
         scoreList.appendChild(div);
     }
 }
 
-//hides quiz div and shows div to submit initials
+//hide quiz div and show div to submit initials
 function submitInfo() {
     quizEl.style.display = 'none';
     initialsEl.style.display = 'block';
 }
 
+//start timer, increment time by 1s, and save score when player runs out of time
 function startTimer() {
     let timer = setInterval(function() {
         timeLeft--;
@@ -70,11 +72,12 @@ function startTimer() {
         if(timeLeft == 0) {
             clearInterval(timer);
             submitInfo();
+            playerScore.textContent = score;
         }
     }, 1000);
 }
 
-//change to next question with associated answers
+//change to next question and change to next set of answers
 function nextQuestion() {
     questionEl.textContent = questions[questionIndex].title;
     for(let i = 0; i < questions[questionIndex].choices.length; i++) {
@@ -109,6 +112,7 @@ ulEl.addEventListener('click', function(event) {
     }
 })
 
+//save players initials and score when player submits initials
 submitEl.addEventListener('click', function() {
     userInfo = document.querySelector('#user-info').value;
 
@@ -116,6 +120,7 @@ submitEl.addEventListener('click', function() {
         player: userInfo, 
         score: score
     };
+
     highScoreList();
 })
 

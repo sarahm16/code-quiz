@@ -43,13 +43,18 @@ ul {
     padding:0px;
 }
 
-li {
+li,
+.newScore {
     background-color: tan;
     padding: 20px;
     color: white;
     margin: 0px;
     border-bottom: 1px solid white;
     font-size: 1.17em;
+}
+
+li:hover {
+    background-color: black;
 }
 
 #timer {
@@ -64,7 +69,7 @@ li {
 .correct {
     text-align: left;
     padding: 0px 0px 20px 10px;
-    color: green;
+    color: rgb(0, 155, 0);
 }
 
 .incorrect {
