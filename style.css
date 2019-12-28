@@ -23,6 +23,10 @@ body {
     margin-top: 25%;
 }
 
+#start:hover {
+    background-color: gray;
+}
+
 .wrapper {
     width: 50%;
     margin: 0 auto;
@@ -42,6 +46,12 @@ body {
     margin: 0px;
 }
 
+#submit,
+#clear-scores {
+    background-color: gray;
+    color: white;
+}
+
 ul {
     list-style-type: none;
     margin: 0px;
@@ -59,11 +69,11 @@ li,
 }
 
 li:hover {
-    background-color: black;
+    background-color: gray;
 }
 
 #timer {
-    position: absolute;
+    position: fixed;
     top: 0px;
     right: 30px;
     font-size: 30px;
@@ -84,10 +94,18 @@ li:hover {
 }
 
 #clear-scores {
-    margin: 20px;
+    float: right;
+    margin: 15px 0px 20px 0px;
+    padding: 10px;
 }
 
 .low-time {
     color: red;
     font-size: 2em;
+}
+
+@media (max-width: 640px) {
+    .wrapper {
+        width: 100%;
+    }
 }

@@ -53,7 +53,7 @@ function highScoreList() {
     for(let i = highScores.length-1; i >= 0; i--) {
         let div = document.createElement('div');
         div.setAttribute('class', 'newScore');
-        div.textContent = highScores[i].player + " score: " + highScores[i].score;
+        div.textContent = highScores[i].player.toUpperCase() + " - score: " + highScores[i].score;
         scoreList.appendChild(div);
     }
 }
