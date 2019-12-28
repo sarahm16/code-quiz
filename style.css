@@ -108,4 +108,9 @@ li:hover {
     .wrapper {
         width: 100%;
     }
+    #timer {
+        position: relative;
+        left: 25px;
+        text-align: left;
+    }
 }
