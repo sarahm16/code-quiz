@@ -32,7 +32,7 @@ function highScoreList() {
     initialsEl.style.display = 'none';
     scoreEl.style.display = 'block';
 
-    //retrieves highScore object from local storage if local storage is set
+    //retrieve highScore object from local storage if local storage is set
     if(localStorage.getItem("score-list") === null) {
         localStorage.setItem("score-list", JSON.stringify(initialPlay));
     }
@@ -43,10 +43,10 @@ function highScoreList() {
     //add new user score and initials to highScores object
     highScores.push(playerResult);
     
-    //sorts the highScores object by score value
+    //sort the highScores array by score value
     highScores.sort((a,b) => (a.score > b.score) ? 1 : -1);
 
-    //save sorted highScores object into local storage
+    //save sorted highScores array into local storage
     localStorage.setItem("score-list", JSON.stringify(highScores));
 
     //create list of high scores from highest to lowest
@@ -68,14 +68,17 @@ function submitInfo() {
 function startTimer() {
     let timer = setInterval(function() {
         timeLeft--;
+        console.log(timeLeft);
         timerEl.textContent = timeLeft;
         if(timeLeft <= 5) {
             timerEl.setAttribute('class', 'time-left low-time');
         }
         if(timeLeft == 0) {
             clearInterval(timer);
-            submitInfo();
             playerScore.textContent = score;
+            if(scoreEl.style.display == 'none') {
+                submitInfo();
+            }
         }
     }, 1000);
 }
