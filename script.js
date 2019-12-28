@@ -11,15 +11,10 @@ let scoreList = document.querySelector('.scores');
 let clearScoresButton = document.querySelector('#clear-scores');
 let playerScore = document.querySelector('#you-scored');
 
-let userInfo;
 let score = 0;
 let questionIndex = 0;
+let timer;
 let timeLeft = 30;
-let highScores = [];
-let playerResult = {};
-let initialPlay = [{player: 0,
-                    score: 0
-                    }];
 
 //starts the game with no divs visible except start button
 initialsEl.style.display = 'none';
@@ -28,6 +23,11 @@ quizEl.style.display = 'none';
 timerEl.style.display = 'none';
 
 function highScoreList() {
+    let highScores = [];
+    let initialPlay = [{player: 0,
+        score: 0
+        }];
+
     //hide submit button and display score div
     initialsEl.style.display = 'none';
     scoreEl.style.display = 'block';
@@ -39,11 +39,11 @@ function highScoreList() {
     else {
         highScores = JSON.parse(localStorage.getItem("score-list"));
     }
+
+    console.log(localStorage.getItem("score-list"));
     
-    //add new user score and initials to highScores object
+    //add new user score and initials to highScores object, sort by score value
     highScores.push(playerResult);
-    
-    //sort the highScores array by score value
     highScores.sort((a,b) => (a.score > b.score) ? 1 : -1);
 
     //save sorted highScores array into local storage
@@ -64,9 +64,9 @@ function submitInfo() {
     initialsEl.style.display = 'block';
 }
 
-//start timer, increment time by 1s, and save score when player runs out of time
+//start timer, decrement time by 1s, and save score when player runs out of time
 function startTimer() {
-    let timer = setInterval(function() {
+    timer = setInterval(function() {
         timeLeft--;
         console.log(timeLeft);
         timerEl.textContent = timeLeft;
@@ -76,9 +76,7 @@ function startTimer() {
         if(timeLeft == 0) {
             clearInterval(timer);
             playerScore.textContent = score;
-            if(scoreEl.style.display == 'none') {
-                submitInfo();
-            }
+            submitInfo();
         }
     }, 1000);
 }
@@ -115,12 +113,13 @@ ulEl.addEventListener('click', function(event) {
         submitInfo();
         score = score + timeLeft;
         playerScore.textContent = score;
+        clearInterval(timer);
     }
 })
 
 //save players initials and score when player submits initials
 submitEl.addEventListener('click', function() {
-    userInfo = document.querySelector('#user-info').value;
+    let userInfo = document.querySelector('#user-info').value;
     playerResult = {
         player: userInfo, 
         score: score
@@ -137,7 +136,7 @@ startButton.addEventListener('click', function() {
 
 //clear high scores out of local storage
 clearScoresButton.addEventListener('click', function() {
-    localStorage.setItem("score-list", JSON.stringify(initialPlay));
+    localStorage.removeItem("score-list");
     scoreList.textContent = "";
 })
 
