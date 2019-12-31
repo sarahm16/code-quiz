@@ -72,7 +72,7 @@ li:hover {
     background-color: gray;
 }
 
-#timer {
+.timer {
     position: fixed;
     top: 0px;
     right: 30px;
@@ -82,14 +82,12 @@ li:hover {
 }
 
 .correct {
-    text-align: left;
     float: left;
     padding: 0px 0px 20px 10px;
     color: rgb(0, 155, 0);
 }
 
 .incorrect {
-    text-align: left;
     float: left;
     padding: 0px 0px 20px 10px;
     color: red;

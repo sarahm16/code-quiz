@@ -1,6 +1,6 @@
 let startButton = document.querySelector('#start');
 let quizEl = document.querySelector('.quiz');
-let timerEl = document.querySelector('#time-left');
+let timerEl = document.querySelector('.timer');
 let ulEl = document.querySelector('#answers');
 let questionEl = document.querySelector('#question');
 let correctEl = document.querySelector('.correct');
@@ -14,7 +14,7 @@ let playerScore = document.querySelector('#you-scored');
 let score = 0;
 let questionIndex = 0;
 let timer;
-let timeLeft = 30;
+let timeLeft = 10;
 
 //starts the game with no divs visible except start button
 initialsEl.style.display = 'none';
@@ -39,8 +39,6 @@ function highScoreList() {
     else {
         highScores = JSON.parse(localStorage.getItem("score-list"));
     }
-
-    console.log(localStorage.getItem("score-list"));
     
     //add new user score and initials to highScores object, sort by score value
     highScores.push(playerResult);
@@ -61,6 +59,7 @@ function highScoreList() {
 //hide quiz div and show div to submit initials
 function submitInfo() {
     quizEl.style.display = 'none';
+    timerEl.style.display = 'none';
     initialsEl.style.display = 'block';
 }
 
@@ -69,9 +68,9 @@ function startTimer() {
     timer = setInterval(function() {
         timeLeft--;
         console.log(timeLeft);
-        timerEl.textContent = timeLeft;
+        timerEl.textContent = "Time: " + timeLeft;
         if(timeLeft <= 5) {
-            timerEl.setAttribute('class', 'time-left low-time');
+            timerEl.setAttribute('class', 'timer low-time');
         }
         if(timeLeft == 0) {
             clearInterval(timer);
