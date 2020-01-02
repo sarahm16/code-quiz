@@ -1,3 +1,4 @@
+let welcomeEl = document.querySelector(".welcome");
 let startButton = document.querySelector('#start');
 let quizEl = document.querySelector('.quiz');
 let timerEl = document.querySelector('.timer');
@@ -127,7 +128,7 @@ submitEl.addEventListener('click', function() {
 })
 
 startButton.addEventListener('click', function() {
-    startButton.style.display = 'none';
+    welcomeEl.style.display = 'none';
     quizEl.style.display = 'block';
     timerEl.style.display = 'block';
     startTimer();
