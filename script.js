@@ -68,7 +68,6 @@ function submitInfo() {
 function startTimer() {
     timer = setInterval(function() {
         timeLeft--;
-        console.log(timeLeft);
         timerEl.textContent = "Time: " + timeLeft;
         if(timeLeft <= 5) {
             timerEl.setAttribute('class', 'timer low-time');
@@ -100,10 +99,13 @@ ulEl.addEventListener('click', function(event) {
         correctEl.setAttribute('class', 'correct');
         correctEl.textContent = "Correct!";
         score++;
+        console.log(score);
     }
     else {
         correctEl.setAttribute('class', 'incorrect');
+        score = score-2;
         correctEl.textContent = "Incorrect!";
+        console.log(score);
     }
     questionIndex++;
     if(questionIndex < questions.length) {
