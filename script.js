@@ -103,7 +103,9 @@ ulEl.addEventListener('click', function(event) {
     }
     else {
         correctEl.setAttribute('class', 'incorrect');
-        score = score-2;
+        if(score !=0) {
+            score = score-2;
+        }
         correctEl.textContent = "Incorrect!";
         console.log(score);
     }
