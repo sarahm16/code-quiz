@@ -14,7 +14,7 @@ let playerScore = document.querySelector('#you-scored');
 let score = 0;
 let questionIndex = 0;
 let timer;
-let timeLeft = 10;
+let timeLeft = questions.length*5;
 
 //starts the game with no divs visible except start button
 initialsEl.style.display = 'none';
