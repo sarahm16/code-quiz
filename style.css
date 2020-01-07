@@ -12,6 +12,15 @@ body {
     text-align: center;
 }
 
+.view-scores {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    color: white;
+    background-color: black;
+    border: none;
+}
+
 #question,
 #score-title {
     background: #ffffff;

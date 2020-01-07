@@ -11,11 +11,12 @@ let submitEl = document.querySelector('#submit');
 let scoreList = document.querySelector('.scores');
 let clearScoresButton = document.querySelector('#clear-scores');
 let playerScore = document.querySelector('#you-scored');
+let viewScores = document.querySelector('.view-scores');
 
 let score = 0;
 let questionIndex = 0;
 let timer;
-let timeLeft = questions.length*5;
+let timeLeft = questions.length*15;
 
 //starts the game with no divs visible except start button
 initialsEl.style.display = 'none';
@@ -91,6 +92,12 @@ function nextQuestion() {
     }
 }
 
+viewScores.addEventListener('click', function() {
+    welcomeEl.style.display = 'none';
+    scoreEl.style.display = 'block';
+    
+})
+
 //when user clicks on answer from list
 ulEl.addEventListener('click', function(event) {
     ulEl.textContent = "";
@@ -103,11 +110,8 @@ ulEl.addEventListener('click', function(event) {
     }
     else {
         correctEl.setAttribute('class', 'incorrect');
-        if(score !=0) {
-            score = score-2;
-        }
         correctEl.textContent = "Incorrect!";
-        console.log(score);
+        timeLeft = timeLeft - 5;
     }
     questionIndex++;
     if(questionIndex < questions.length) {
