@@ -137,6 +137,7 @@ submitEl.addEventListener('click', function() {
 
 startButton.addEventListener('click', function() {
     welcomeEl.style.display = 'none';
+    viewScores.style.display = 'none';
     quizEl.style.display = 'block';
     timerEl.style.display = 'block';
     startTimer();
