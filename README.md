@@ -14,3 +14,5 @@ On the initial screen, user is prompted to begin quiz. Once the start button is 
 
 ## High Score board
 <img src="images/scores.png" alt="high-scores">
+
+<a href="https://sarahm16.github.io/homework-4/">Link to Quiz</a>
